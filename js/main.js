@@ -34,6 +34,10 @@
         contadorProductos.innerText = "0";
         productosTotal.innerText = "0";
         precioTotal.innerText= "$ 0";
+
+        localStorage.setItem("contadorProductos",contador);
+        localStorage.setItem("totalEnProductos", totalEnProductos);
+        localStorage.setItem("costoTotal", costoTotal.toFixed(2));
     }); //click btnClear
 
     function validarCantidad(){
@@ -100,6 +104,9 @@
             productosTotal.innerText=totalEnProductos;
             costoTotal = precio * parseFloat(txtNumber.value);
             precioTotal.innerText = `$ ${costoTotal.toFixed(2)}`;
+            localStorage.setItem("contadorProductos",contador);
+            localStorage.setItem("totalEnProductos", totalEnProductos);
+            localStorage.setItem("costoTotal", costoTotal.toFixed(2));
             txtNombre.value=""; //limpiar campos
             txtNumber.value=""; //limpiar campos
             txtNombre.focus();
