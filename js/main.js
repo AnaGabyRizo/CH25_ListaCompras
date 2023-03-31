@@ -21,6 +21,8 @@
     let totalEnProductos = 0;
     let costoTotal = 0;
 
+    let datos = []; //aquí se almacenarán
+
     // Limpiar campos
     btnClear.addEventListener("click", function (event) {
         event.preventDefault();
@@ -97,7 +99,18 @@
                           <td>${txtNombre.value}</td> 
                           <td>${txtNumber.value}</td>
                           <td>$ ${precio}</td>
-                         </tr>`; //table road, table head, table data     
+                         </tr>`; //table road, table head, table data  
+            
+            let elemento =  `{
+                             "id": ${contador}, 
+                             "nombre" : "${txtNombre.value}",
+                             "cantidad" : "${txtNumber.value}",
+                             "precio" : "${precio}"
+                            }`;
+            datos.push( JSON.parse(elemento) ); //tomar la cadena, convertirla en objeto y meterla en un arreglo JSON                             
+
+            localStorage.setItem("datos", JSON.stringify(datos) );
+
             cuerpoTabla[0].insertAdjacentHTML("beforeend", row);
             contadorProductos.innerText=contador;
             totalEnProductos += parseFloat(txtNumber.value);
